@@ -33,7 +33,7 @@
         <pose>-0.064 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://turtlebot3_common/meshes/waffle_pi_base.dae</uri>
+            <uri>model://turtlebot3_ignition/models/turtlebot3_common/meshes/waffle_pi_base.dae</uri>
             <scale>0.001 0.001 0.001</scale>
           </mesh>
         </geometry>
@@ -124,7 +124,7 @@
         <pose>-0.064 0 0.121 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://turtlebot3_common/meshes/lds.dae</uri>
+            <uri>model://turtlebot3_ignition/models/turtlebot3_common/meshes/lds.dae</uri>
             <scale>0.001 0.001 0.001</scale>
           </mesh>
         </geometry>
@@ -216,7 +216,7 @@
         <pose>0.0 0.144 0.023 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://turtlebot3_common/meshes/tire.dae</uri>
+            <uri>model://turtlebot3_ignition/models/turtlebot3_common/meshes/tire.dae</uri>
             <scale>0.001 0.001 0.001</scale>
           </mesh>
         </geometry>
@@ -279,7 +279,7 @@
         <pose>0.0 -0.144 0.023 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://turtlebot3_common/meshes/tire.dae</uri>
+            <uri>model://turtlebot3_ignition/models/turtlebot3_common/meshes/tire.dae</uri>
             <scale>0.001 0.001 0.001</scale>
           </mesh>
         </geometry>
@@ -311,16 +311,12 @@
           </sphere>
         </geometry>
         <surface>
-          <contact>
+          <friction>
             <ode>
-              <soft_cfm>0</soft_cfm>
-              <soft_erp>0.2</soft_erp>
-              <kp>1e+5</kp>
-              <kd>1</kd>
-              <max_vel>0.01</max_vel>
-              <min_depth>0.001</min_depth>
+              <mu>0.0</mu>
+              <mu2>0.0</mu2>
             </ode>
-          </contact>
+          </friction>
         </surface>
       </collision>
     </link>
@@ -483,10 +479,14 @@
 
       <!-- kinematics -->
       <wheel_separation>0.287</wheel_separation>
-      <wheel_diameter>0.066</wheel_diameter>
+      <wheel_radius>0.033</wheel_radius>
 
       <!-- limits -->
-      <max_linear_acceleration>0.033</max_linear_acceleration>
+      <max_linear_velocity>0.26</max_linear_velocity>
+      <min_linear_velocity>-0.26</min_linear_velocity>
+      <max_angular_velocity>1.82</max_angular_velocity>
+      <min_angular_velocity>-1.82</min_angular_velocity>
+      <max_linear_acceleration>0.33</max_linear_acceleration>
 
       <topic>cmd_vel</topic>
 
@@ -503,6 +503,13 @@
       <topic>joint_states</topic>
       <joint_name>wheel_left_joint</joint_name>
       <joint_name>wheel_right_joint</joint_name>
+    </plugin>
+
+    <plugin filename="libignition-gazebo-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
+      <odom_frame>world</odom_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
+      <odom_publish_frequency>30</odom_publish_frequency>
+      <odom_topic>ground_truth</odom_topic>
     </plugin>
 
   </model>
