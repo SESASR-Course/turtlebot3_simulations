@@ -31,8 +31,6 @@ def generate_launch_description():
     ros_gz_sim = get_package_share_directory("ros_gz_sim")
 
     use_sim_time = LaunchConfiguration("use_sim_time", default="true")
-    x_pose = LaunchConfiguration("x_pose", default="-2.0")
-    y_pose = LaunchConfiguration("y_pose", default="-0.5")
 
     default_world = os.path.join(turtlebot3_ignition_dir, "worlds", "empty_world.world")
     world = LaunchConfiguration("world")
@@ -43,6 +41,18 @@ def generate_launch_description():
             SDF world file. Can be one of the worlds included in the turtlebot3_ignition package or a custom world file. 
             Eg.: world:=turtlebot3_ignition/worlds/turtlebot3_world.world OR world:=/path/to/custom/world.world
         """,
+    )
+
+    declare_arg_x_pose = DeclareLaunchArgument(
+        "x_pose",
+        default_value="-2.0",
+        description="Initial x position of the robot in the world frame",
+    )
+
+    declare_arg_y_pose = DeclareLaunchArgument(
+        "y_pose",
+        default_value="-0.5",
+        description="Initial y position of the robot in the world frame",
     )
 
     gzserver_cmd = IncludeLaunchDescription(
@@ -63,7 +73,6 @@ def generate_launch_description():
 
     spawn_turtlebot_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(launch_file_dir, "spawn_turtlebot3.launch.py")),
-        launch_arguments={"x_pose": x_pose, "y_pose": y_pose}.items(),
     )
 
     ld = LaunchDescription()
