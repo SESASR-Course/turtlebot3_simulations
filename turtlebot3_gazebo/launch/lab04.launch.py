@@ -62,7 +62,6 @@ def generate_launch_description():
         parameters=[
             {
                 "frequency_hz": 5.0,
-                "robot_frame": "base_footprint",
                 "field_of_view_deg": 70.0,
                 "max_range": 3.0,
                 "min_range": 0.3,
