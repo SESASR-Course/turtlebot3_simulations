@@ -33,6 +33,72 @@
             <direction>-0.5 0.1 -0.9</direction>
         </light>
 
+        <!-- <actor name="goal_box">
+            <link name="box_link">
+                <visual name="visual">
+                    <geometry>
+                        <box>
+                            <size>.2 .2 .2</size>
+                        </box>
+                    </geometry>
+                    <material>
+                        <ambient>0.1 0.1 0.1 1</ambient>
+                        <diffuse>0.87 0.11 0.11 1</diffuse>
+                        <specular>0 0.01 0.05 1</specular>
+                    </material>
+                </visual>
+            </link>
+            <script>
+                <loop>true</loop>
+                <auto_start>true</auto_start>
+                <trajectory id="0" type="square">
+
+                    <waypoint>
+                        <time>0.0</time>
+                        <pose>1.5 -0.5 0.5 0 0 0</pose>
+                    </waypoint>
+
+                    <waypoint>
+                        <time>10.0</time>
+                        <pose>1.5 -0.5 0.5 0 0 0</pose>
+                    </waypoint>
+
+                    <waypoint>
+                        <time>27.0</time>
+                        <pose>2.2 -3.5 0.5 0 0 0</pose>
+                    </waypoint>
+
+                    <waypoint>
+                        <time>41.0</time>
+                        <pose>-0.5 -3.5 0.5 0 0 0</pose>
+                    </waypoint>
+
+                    <waypoint>
+                        <time>55.0</time>
+                        <pose>-2.45 -2.0 0.5 0 0 0</pose>
+                    </waypoint>
+
+                    <waypoint>
+                        <time>69.0</time>
+                        <pose>-3.45 0.8 0.5 0 0 0</pose>
+                    </waypoint>
+
+                    <waypoint>
+                        <time>89.0</time>
+                        <pose>-3.1 4.5 0.5 0 0 0</pose>
+                    </waypoint>
+
+                    <waypoint>
+                        <time>120.0</time>
+                        <pose>-7.0 7.5 0.5 0 0 0</pose>
+                    </waypoint>
+
+                </trajectory>
+
+            </script>
+
+        </actor> -->
+
         <model name='border'>
             <pose>0 0 1 0 0 0</pose>
             <static>true</static>
