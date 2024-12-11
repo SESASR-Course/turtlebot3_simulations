@@ -4,4 +4,4 @@ origin: [-11.000000, -11.000000, 0.0]
 resolution: 0.050000
 mode: trinary
 occupied_thresh: 0.95
-image: /workspaces/marco_humble/map.pgm
+image: map.pgm
