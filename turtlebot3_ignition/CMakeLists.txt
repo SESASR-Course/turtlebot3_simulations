@@ -7,9 +7,20 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(ignition-gazebo6 REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(nav_msgs REQUIRED)
+
+add_library(trajectory_plugin SHARED src/trajectory_plugin.cpp)
+ament_target_dependencies(trajectory_plugin
+  rclcpp
+  nav_msgs
+)
+target_link_libraries(trajectory_plugin
+  ignition-gazebo6::ignition-gazebo6
+)
+
+install(TARGETS trajectory_plugin LIBRARY DESTINATION lib)
 
 install(DIRECTORY
   config
